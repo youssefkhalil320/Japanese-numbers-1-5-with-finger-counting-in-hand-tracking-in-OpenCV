@@ -38,7 +38,7 @@ pip install -r requirements.txt
 ### Step 4: run the program 
 
 ```bash
-python FingerCounter.py
+python main.py
 ```
 
 ## License
