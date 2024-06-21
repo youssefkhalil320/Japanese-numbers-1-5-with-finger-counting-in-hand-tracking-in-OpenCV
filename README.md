@@ -13,14 +13,34 @@ If you opend five finger it will play -> go (five in Japanese)
 - [@youssefkhalil](https://www.linkedin.com/in/youssef-khalil-4517641a2/)
 
 
-## Dependencies
+## Usage
+
+### Step 1: Create a Virtual Python Environment
+
+First, create a new virtual environment to ensure all dependencies are isolated from your main Python installation.
 
 ```bash
-  pip install opencv-python
-  pip install mediapipe
-  pip install time
+conda create -n japanese-hand-tracker python=3.9 
 ```
-    
+
+### Step 2: Activate the Environment
+
+```bash
+conda activate japanese-hand-tracker
+```
+
+### Step 3: Install the Requirements
+
+```bash
+pip install -r requirements.txt
+```
+
+### Step 4: run the program 
+
+```bash
+python FingerCounter.py
+```
+
 ## License
 
 Copyright 2022 youssef khalil
