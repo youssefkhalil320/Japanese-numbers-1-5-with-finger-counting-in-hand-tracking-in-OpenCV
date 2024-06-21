@@ -1,15 +1,14 @@
 import cv2
 import time
 import os
-import HandTrackingModule as htm
+import modules.HandTrackingModule as htm
 from playsound import playsound
 
 wCam, hCam = 640, 480
 
-cap = cv2.VideoCapture(1)
+cap = cv2.VideoCapture(0)
 cap.set(3, wCam)
 cap.set(4, hCam)
-
 
 pTime = 0
 
@@ -21,7 +20,6 @@ while True:
     success, img = cap.read()
     img = detector.findHands(img)
     lmList = detector.findPosition(img, draw=False)
-    # print(lmList)
 
     if len(lmList) != 0:
         fingers = []
@@ -39,22 +37,24 @@ while True:
             else:
                 fingers.append(0)
 
-        print(fingers)
-        if fingers.count(1) == 1:
-            playsound(r'sounds\one.mp3')
+        fingerCount = fingers.count(1)
+        print(fingerCount)
+
+        if fingerCount == 1:
+            playsound('sounds/one.mp3')
             time.sleep(1)
-        if fingers.count(1) == 2:
-            playsound(r'sounds\two.mp3')
-            time.sleep(1)    
-        if fingers.count(1) == 3:
-            playsound(r'sounds\three.mp3')
-            time.sleep(1)     
-        if fingers.count(1) == 4:
-            playsound(r'sounds\four.mp3')
-            time.sleep(1)   
-        if fingers.count(1) == 5:
-            playsound(r'sounds\five.mp3')
-            time.sleep(1)      
+        elif fingerCount == 2:
+            playsound('sounds/two.mp3')
+            time.sleep(1)
+        elif fingerCount == 3:
+            playsound('sounds/three.mp3')
+            time.sleep(1)
+        elif fingerCount == 4:
+            playsound('sounds/four.mp3')
+            time.sleep(1)
+        elif fingerCount == 5:
+            playsound('sounds/five.mp3')
+            time.sleep(1)
 
     cTime = time.time()
     fps = 1 / (cTime - pTime)
@@ -65,4 +65,4 @@ while True:
 
     cv2.imshow("Image", img)
     if cv2.waitKey(1) & 0xFF == ord('q'):
-            break
+        break
